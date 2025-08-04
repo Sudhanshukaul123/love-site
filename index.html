@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Something Special For You 💕</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(
+          135deg,
+          #ffeef8 0%,
+          #f0e6ff 50%,
+          #e6f3ff 100%
+        );
+        min-height: 100vh;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      .floating-hearts {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .heart {
+        position: absolute;
+        color: rgba(255, 182, 193, 0.6);
+        font-size: 20px;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .heart:nth-child(1) {
+        left: 10%;
+        animation-delay: 0s;
+      }
+      .heart:nth-child(2) {
+        left: 20%;
+        animation-delay: 1s;
+      }
+      .heart:nth-child(3) {
+        left: 30%;
+        animation-delay: 2s;
+      }
+      .heart:nth-child(4) {
+        left: 40%;
+        animation-delay: 3s;
+      }
+      .heart:nth-child(5) {
+        left: 50%;
+        animation-delay: 4s;
+      }
+      .heart:nth-child(6) {
+        left: 60%;
+        animation-delay: 5s;
+      }
+      .heart:nth-child(7) {
+        left: 70%;
+        animation-delay: 1.5s;
+      }
+      .heart:nth-child(8) {
+        left: 80%;
+        animation-delay: 2.5s;
+      }
+      .heart:nth-child(9) {
+        left: 90%;
+        animation-delay: 3.5s;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(100vh) rotate(0deg);
+          opacity: 0;
+        }
+        10%,
+        90% {
+          opacity: 1;
+        }
+        50% {
+          transform: translateY(-10vh) rotate(180deg);
+        }
+      }
+
+      .page {
+        display: none;
+        min-height: 100vh;
+        padding: 2rem;
+        position: relative;
+        z-index: 2;
+        animation: fadeIn 1s ease-in-out;
+      }
+
+      .page.active {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .landing-content {
+        text-align: center;
+        max-width: 600px;
+      }
+
+      .landing-title {
+        font-family: "Dancing Script", cursive;
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        color: #d63384;
+        margin-bottom: 1rem;
+        animation: typewriter 3s steps(40) 1s both;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 3px solid #d63384;
+      }
+
+      @keyframes typewriter {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      .landing-subtitle {
+        font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+        color: #6f42c1;
+        margin-bottom: 3rem;
+        opacity: 0;
+        animation: fadeInUp 1s ease-out 4s both;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .btn {
+        background: linear-gradient(45deg, #ff6b9d, #c44569);
+        color: white;
+        border: none;
+        padding: 1rem 2.5rem;
+        font-size: 1.2rem;
+        font-weight: 500;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 25px rgba(255, 107, 157, 0.3);
+        opacity: 0;
+        animation: fadeInUp 1s ease-out 5s both;
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(255, 107, 157, 0.4);
+      }
+
+      .letter-container {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        justify-content: center;
+        border-radius: 20px;
+        padding: 3rem;
+        max-width: 700px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        text-align: center;
+      }
+
+      .letter-title {
+        font-family: "Dancing Script", cursive;
+        font-size: 2.5rem;
+        color: #d63384;
+        margin-bottom: 2rem;
+      }
+
+      .letter-content {
+        font-size: 1.1rem;
+        text-align: center;
+        line-height: 1.8;
+        color: #495057;
+        margin-bottom: 2rem;
+      }
+
+      .letter-content p {
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .letter-sign {
+        font-family: "Dancing Script", cursive;
+        font-size: 2rem;
+        color: #d63384;
+      }
+
+      @media (max-width: 768px) {
+        .page {
+          padding: 1rem 0.5rem;
+        }
+
+        .landing-title {
+          font-size: 2.2rem;
+          white-space: normal;
+          border-right: none;
+          animation: fadeIn 2s ease-in-out;
+          padding: 0 1rem;
+        }
+
+        .landing-subtitle {
+          font-size: 1rem;
+          padding: 0 1rem;
+          text-wrap: balance;
+        }
+
+        .btn {
+          width: 80%;
+          max-width: 300px;
+          font-size: 1rem;
+          padding: 0.8rem 1.5rem;
+          margin-top: 1rem;
+        }
+
+        .letter-container {
+          padding: 2rem 1rem;
+          width: 100%;
+          margin: 0 1rem;
+          box-sizing: border-box;
+        }
+
+        .letter-title {
+          font-size: 2rem;
+        }
+
+        .letter-content {
+          font-size: 1rem;
+          line-height: 1.6;
+          text-align: left;
+          padding: 0 0.5rem;
+        }
+
+        .letter-sign {
+          font-size: 1.5rem;
+          margin-top: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Floating Hearts -->
+    <div class="floating-hearts">
+      <div class="heart">💕</div>
+      <div class="heart">💖</div>
+      <div class="heart">💗</div>
+      <div class="heart">💝</div>
+      <div class="heart">💕</div>
+      <div class="heart">💖</div>
+      <div class="heart">💗</div>
+      <div class="heart">💝</div>
+      <div class="heart">💕</div>
+    </div>
+
+    <!-- Page 1 -->
+    <div class="page active" id="page1">
+      <div class="landing-content">
+        <h1 class="landing-title">This, For My Cute Varshuu...</h1>
+        <p class="landing-subtitle">There's something for you 💕</p>
+        <button class="btn" onclick="showPage(2)">Reveal ✨</button>
+      </div>
+    </div>
+
+    <!-- Page 2 -->
+    <div class="page" id="page2">
+      <div class="letter-container">
+        <h2 class="letter-title">Okay, hear me out...</h2>
+        <div class="letter-content">
+          <p>
+            So... I'on know how much serious you are but me ??? ofc i'm , and I
+            thought the best way to tell you is today butttt.... YKYKYK
+          </p>
+          <p>
+            So plan to design this lil website I made 😋😋, our meet is meet
+            like when we first met on OMSHEE's ID. Then our music taste, humor —
+          </p>
+          <p>
+            SYNCED sooooo welllllll. Like dono hi seedhemaut paglus daymnnnn and
+            kabhi sath me concert mei jayenge calm ke dealer ka no. lekr aayenge
+            LOL.
+          </p>
+          <p>
+            And let's plan our next date soon (and missing you while designing)
+          </p>
+        </div>
+        <p class="letter-sign">— Krishna</p>
+      </div>
+    </div>
+
+    <script>
+      function showPage(pageNumber) {
+        const pages = document.querySelectorAll(".page");
+        pages.forEach((page) => page.classList.remove("active"));
+        document.getElementById(`page${pageNumber}`).classList.add("active");
+      }
+
+      // Sparkle trail
+      document.addEventListener("mousemove", function (e) {
+        if (Math.random() > 0.9) {
+          const sparkle = document.createElement("div");
+          sparkle.innerHTML = "✨";
+          sparkle.style.position = "fixed";
+          sparkle.style.left = e.clientX + "px";
+          sparkle.style.top = e.clientY + "px";
+          sparkle.style.pointerEvents = "none";
+          sparkle.style.fontSize = "12px";
+          sparkle.style.zIndex = "1000";
+          sparkle.style.animation = "fadeOut 1s ease-out forwards";
+          document.body.appendChild(sparkle);
+          setTimeout(() => sparkle.remove(), 1000);
+        }
+      });
+
+      const style = document.createElement("style");
+      style.textContent = `
+      @keyframes fadeOut {
+        0% { opacity: 1; transform: translateY(0); }
+        100% { opacity: 0; transform: translateY(-20px); }
+      }
+    `;
+      document.head.appendChild(style);
+    </script>
+  </body>
+</html>
